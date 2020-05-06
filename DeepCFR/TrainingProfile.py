@@ -42,6 +42,7 @@ class TrainingProfile(TrainingProfileBase):
 
                  # ------ Env
                  game_cls=DiscretizedNLLeduc,
+                 env_bldr_cls=FlatLimitPokerEnvBuilder, 
                  n_seats=2,
                  agent_bet_set=bet_sets.B_2,
                  start_chips=None,
@@ -122,7 +123,7 @@ class TrainingProfile(TrainingProfileBase):
         if nn_type == "recurrent":
             from PokerRL.rl.neural.MainPokerModuleRNN import MPMArgsRNN
 
-            env_bldr_cls = HistoryEnvBuilder
+            #env_bldr_cls = HistoryEnvBuilder
 
             mpm_args_adv = MPMArgsRNN(rnn_cls_str=rnn_cls_str_adv,
                                       rnn_units=rnn_units_adv,
@@ -142,7 +143,7 @@ class TrainingProfile(TrainingProfileBase):
         elif nn_type == "feedforward":
             from PokerRL.rl.neural.MainPokerModuleFLAT import MPMArgsFLAT
 
-            env_bldr_cls = FlatLimitPokerEnvBuilder
+            #env_bldr_cls = FlatLimitPokerEnvBuilder
 
             mpm_args_adv = MPMArgsFLAT(use_pre_layers=use_pre_layers_adv,
                                        card_block_units=n_cards_state_units_adv,
